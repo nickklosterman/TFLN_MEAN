@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="TFLN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <link rel="stylesheet" type="text/css" href="./lib/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <script type="text/javascript" src="./lib/angular.min.js"></script>
+    <script type="text/javascript" src="./app/app.js"></script>
+  </head>
+  <body class="list-group" ng-controller="TFLNController as tfln">
+    <header>
+      <h1 class="text-center">(Drunk?) Texts From Last Night</h1>
+      <h2 class="text-center">- an Angular app -</h2>
+    </header>
+    <div class="list-group-item" ng-repeat="text in tfln.TFLN">
+      <individual-text></individual-text>
+    </div>
+  </body>
+</html>

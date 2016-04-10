@@ -1,0 +1,34 @@
+{
+    "name": "tfln_mean",
+    "version": "1.0.0",
+    "description": "TFLN viewer using MEAN stack",
+    "main": "app.js",
+    "scripts": {
+	"test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+	"type": "git",
+	"url": "git+https://github.com/nickklosterman/TFLN_MEAN.git"
+    },
+    "keywords": [
+	"TFLN"
+    ],
+    "author": "Nick Klosterman",
+    "license": "MIT",
+    "bugs": {
+	"url": "https://github.com/nickklosterman/TFLN_MEAN/issues"
+    },
+    "homepage": "https://github.com/nickklosterman/TFLN_MEAN#readme",
+    "dependencies":{
+	"express"		: "~4.13.4",
+	"body-parser"		: "~1.15.0",
+	"cookie-parser"		: "~1.4.1",
+	"debug"			: "~2.0.0",
+	"serve-favicon"		: "~2.1.3",
+	"morgan"		: "~1.7.0",
+	"method-override"	: "~2.3.5",
+	"errorhandler"		: "~1.4.3",
+	"compression":"~1.6.1"
+	
+    }
+}
