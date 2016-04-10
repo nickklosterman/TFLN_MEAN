@@ -30,14 +30,18 @@ app.set('version',packageJSON.version);
 
 //  BEGIN SERVER CONFIGURATION 
 
-app.use( bodyParser() );
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 //all of this stuff is order dependent. If we had a static file that matched the api url format then the static file would be served as long as the express.static is first. If the router was first then the api call would be hit. To prevent this it is best to have a root named 'api/1.0.0' etc to prevent those cases from happening
 app.use( express.static( __dirname + '/public' ));
 //app.use( app.router );
 
 if ( 'development' == env) {
-    app.use( logger() );
+    app.use( logger('combined') );
     app.use( errorHandler({
 	dumpExceptions: true,
 	showStack : true}));
