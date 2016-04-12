@@ -56,47 +56,6 @@
 		controllerAs:'individualText' //name in view must match this.
 	    }
 	})
-	.directive('emitter', function(){
-	    return {
-		restrict: 'E',
-		templateUrl:'./app/views/emitter.html',
-		controller: function($scope){
-		    this.msg = '';
-		    this.handleClick = function () {
-			console.log("handleClick");
-			$scope.$emit('eventName',{message: this.msg});
-		    };
-		},
-		controllerAs: 'emitter'
-	    }
-	})
-	.directive('sendMessage', function(){
-	    return {
-		restrict: 'E',
-		templateUrl:'./app/views/send-message.html',
-		controller: function(/*$scope*/){
-//		    this.msg = '';
-		    this.handleClick = function (msg) {
-			console.log("sendMessage:"+msg+' '+this.myMsg); //thought myMsg was autocreated and added to the model
-			//$scope.$emit('eventName',{message: this.msg});
-		    };
-		},
-		controllerAs: 'sendMessage'
-	    }
-	})
-	.directive('testClick', function() {
-	    return {
-		restrict: 'E',
-		//		templateUrl:'./app/views/emitter.html',
-		templateUrl:'./app/views/click.html',
-		controller: function() {
-		    this.testClick = function() {
-			console.log('test click');
-		    };
-		},
-		controllerAs: 'tC'
-	    }
-	})
 	.directive('sortByUpvotes', function() {
 	    return {
 		restrict: 'E',

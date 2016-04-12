@@ -20,12 +20,9 @@ TextSchema.set('toJSON', {
 
 //http://mongoosejs.com/docs/guide.html#methods
 TextSchema.statics.findByAreaCode = function(area_code ,cb) {
-/*    this.model('Text')
-	.find({ "area_code":area_code})
-	.exec(cb);*/
-    console.log("executing statics",area_code);
     return this.find({"Area Code":"("+area_code+")"}).limit(4).exec(cb);
 };
+
 /* I need to update mongo to > 2.4 to use this 
 TextSchema.statics.findByAreaCode = function(searchTerm ,cb) {
     return this.find({$text : {$search : searchTerm } }, cb);
@@ -35,7 +32,6 @@ TextSchema.statics.list = function(cb) {
    return this.find()
 	.limit(5)
     	.exec(cb);
-//    return {turd: "ferguson"};
 };
 
 TextSchema.statics.listSortedByCreationDate = function(cb) {
@@ -56,6 +52,5 @@ TextSchema.statics.listSortedByDownvotes = function(cb) {
 	.limit(10)
 	.exec(cb);
 };
-
 
 module.exports = TextSchema;

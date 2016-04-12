@@ -1,10 +1,8 @@
-<header>Text from area code {{text['Area Code']}}<button ng-click="individualText.upvote(text.id)">Upvote</button>
-  <span>upvotes {{text.upvotes}}</span>
-  <button ng-click="individualText.downvote(text.id)">Downvote</button><span>downvotes {{text.downvotes}}</span>
+<header>Text from area code {{text['Area Code']}}
+  <div><button ng-click="individualText.upvote(text.id)">Upvote</button>
+  <span>upvotes {{text.upvotes}}</span></div><div>
+  <button ng-click="individualText.downvote(text.id)">Downvote</button><span>downvotes {{text.downvotes}}</span></div>
 </header>
 <p>{{text.Text}}</p>
 <p>{{text.id}}</p>
 <footer class="push-left">Text created on {{text.createdOn | date}}</footer> 
-
-//emit on the upvote/downvote alghouth there was the one module where it took that specific 'product' and updated it based on that.
-//so don't emit for upvote/downvote, emit for pagination

@@ -1,10 +1,10 @@
 <button ng-click="uploadText.showFormHandler()">{{uploadText.showHideFormText}} Form</button>
 <div ng-show="uploadText.showForm">
-  <form ng-submit="uploadText.uploadText()" novalidate>
-       <textarea ng-model="uploadText.text['Area Code']" type="number" placeholder="507"></textarea>
+  <form name="newTFLN" ng-submit="newTFLN.$valid && uploadText.uploadText()" novalidate>
+       <textarea ng-model="uploadText.text['Area Code']" type="number" placeholder="507" maxlength="3"></textarea>
  <!--   <input ng-model="uploadText.text['Area Code']" type="number" placeholder="507"> -->
     <!-- <input ng-model="uploadText.text.Text" type="text" placeholder="Saucy drunk text"> -->
-      <textarea ng-model="uploadText.text.Text" type="text" placeholder="Saucy drunk text"></textarea>
+      <textarea ng-model="uploadText.text.Text" type="text" placeholder="Saucy drunk text" maxlength="500"></textarea>
 <!--     <button ng-click="uploadText.clearForm()">Submit Form</button> -->
 <input type="submit" value="Submit" />
     <button ng-click="uploadText.clearForm()">Clear Form</button>
