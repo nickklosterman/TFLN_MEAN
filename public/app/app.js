@@ -11,6 +11,12 @@
 		$scope.message = args.message;
 		console.log($scope.message);
 	    });
+	    $scope.$on('uploadText',function(event,args){
+		console.log('uploadText', args);
+		$http.post('./api/text',args).success(function(data){
+		    console.log(data);
+		});
+	    });
 	    $scope.$on('downvote',function(event,args){
 		console.log('downvote');
 		$http.put('./api/text/downvote/'+args.id).success(function(data){
@@ -112,7 +118,31 @@
 			$scope.$emit('sortByDownvote',{});
 		    }
 		},
-		controllerAs: 'downvote'
+		controllerAs: 'downvote' //TODO: standardize the directive name, the controllerAs name and the templateUrl filename. Should the dirctive and the controller be named the same thing?
+	    }
+	})
+	.directive('uploadText',function() {
+	    return {
+		restrict: 'E',
+		templateUrl: './app/views/upload-text.html',
+		controller: function($scope) {
+		    this.showForm = true;//false;
+		    this.showHideFormText = "Hide";//"Show";
+		    this.text = { "Area Code": 0, Text: '' };
+		    
+		    this.showFormHandler = function() {
+			this.showForm = !this.showForm;
+			this.showForm === false ? this.showHideFormText = "Show" : this.showHideFormText = "Hide";
+		    };
+		    this.clearForm = function() {
+			this.text = { "Area Code": 0, Text: '' };
+		    };
+		    this.uploadText = function() {
+			$scope.$emit('uploadText', this.text);
+			this.clearForm();
+		    };
+		},
+		controllerAs: 'uploadText'
 	    }
 	});
     var textsFromLastNight = [

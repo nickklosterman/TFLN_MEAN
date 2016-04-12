@@ -21,3 +21,4 @@ Sun Apr 10 12:39:04 EDT 2016
 I used this to import my text file into mongo. I was unable to get my api to work to talk to this db despite seeing the data that was imported. 
 ./mongoimport -d TFLN -c TFLN --type tsv --file ~/Repo/Github/BashScripts/TFLN/TFLN16112013.tsv.txt --headerline
 I started a small mongo/mongoose POC project with the same TFLN name. Now there are two TFLN databases. Using the api, I only see the data that I insert with a POST. I can't see the stuff inserted via the above mongoimport. I'm not sure if it is something with the schema that is jacking it all up. 
+----->Nyuck nyuck nyuck. the above was due to a name mismatch. I somewhere had a 'TLFN' instead of 'TFLN' database call. simple mistake that had me all over the place. 

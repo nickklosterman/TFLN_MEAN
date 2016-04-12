@@ -55,21 +55,12 @@ console.log("...initializing routes");
 var router = express.Router();
 app.use( '/', router ); //needed this otherwise wasn't handling 
 
-router.get('/test',function(req, res) {
-    var data = {
-	name: 'Jason Krol',
-	website: 'http://kroltech.com'
-    };
-    res.json(data);
-    
-});/**/
-
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/TFLN');
 
 var textApi = require('./routes/api/text');
+//GET
 router.get('/api/texts/list', textApi.list);
-router.get('/api/texts/test', textApi.test);
 router.get('/api/texts/sortMostUpvoted', textApi.listSortedByUpvotes);
 router.get('/api/texts/sortMostDownvoted', textApi.listSortedByDownvotes);
 router.get('/api/texts/:area_code', textApi.findByAreaCode);
@@ -84,5 +75,6 @@ router.put('/api/text/downvote/:id', textApi.downvote);
 server.listen(port);
 
 //this is shitty. if there is another node http server running, then it will state that server.address() has an error bc address isn't a function of undefined. this is all because there was a port collision when trying to initialize the server. So the whole thing fails without much indication :(
+//Why doesn't it throw the EADDRESSINUSE error?
 console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
 

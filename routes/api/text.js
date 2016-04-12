@@ -61,11 +61,13 @@ exports.get = function( req, res, next) {
 */
 exports.insertNewText = function( req, res, next) {
     var text = req.body;
-//TODO: we need to add in the area code. Actually shouldn't this fail since no Area Code is added and we say that is a required field?
+    text["Area Code"]="("+text['Area Code']+")";
+  //  console.log("text ",text);
     models.Text.create(text, function(e,t){
 	if (e) {return next(e);};
+	//	console.log("text returned",t);
 	res.status(201).json(t);
-    });
+    }); 
 };
 exports.upvote = function(req, res, next) {
     console.log('upvote',req.body);
