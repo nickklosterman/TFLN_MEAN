@@ -28,7 +28,8 @@
 	"morgan"		: "~1.7.0",
 	"method-override"	: "~2.3.5",
 	"errorhandler"		: "~1.4.3",
-	"compression":"~1.6.1"
+	"compression"		: "~1.6.1",
+	"mongoose"		: "~4.4.12"
 	
     }
 }

@@ -10,13 +10,14 @@
 var http = require('http'),
     express = require('express'),
     app = express(),
+//    router = app.Router,
     bodyParser = require('body-parser'),
     logger = require('morgan'),
     errorHandler = require('errorhandler'),
     methodOverride = require('method-override'),
     server = http.createServer(app),
     packageJSON = require('./package.json'),
-    //    routes = require('./lib/routes'),
+//    routes = require('./lib/routes'),
     port = process.env.PORT || 8080,
     env = process.env.NODE_ENV || 'development';
 
@@ -32,13 +33,12 @@ app.set('version',packageJSON.version);
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
-
 // parse application/json
 app.use(bodyParser.json())
 
 //all of this stuff is order dependent. If we had a static file that matched the api url format then the static file would be served as long as the express.static is first. If the router was first then the api call would be hit. To prevent this it is best to have a root named 'api/1.0.0' etc to prevent those cases from happening
 app.use( express.static( __dirname + '/public' ));
-//app.use( app.router );
+
 
 if ( 'development' == env) {
     app.use( logger('combined') );
@@ -50,6 +50,35 @@ if ( 'development' == env) {
 }
 
 //routes.configRoutes(app,server)
+console.log("...initializing routes");
+//require('./routes').init(router);
+var router = express.Router();
+app.use( '/', router ); //needed this otherwise wasn't handling 
+
+router.get('/test',function(req, res) {
+    var data = {
+	name: 'Jason Krol',
+	website: 'http://kroltech.com'
+    };
+    res.json(data);
+    
+});/**/
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/TFLN');
+
+var textApi = require('./routes/api/text');
+router.get('/api/texts/list', textApi.list);
+router.get('/api/texts/test', textApi.test);
+router.get('/api/texts/sortMostUpvoted', textApi.listSortedByUpvotes);
+router.get('/api/texts/sortMostDownvoted', textApi.listSortedByDownvotes);
+router.get('/api/texts/:area_code', textApi.findByAreaCode);
+
+//post to create
+router.post('/api/text', textApi.insertNewText);
+//put to update
+router.put('/api/text/upvote/:id', textApi.upvote);
+router.put('/api/text/downvote/:id', textApi.downvote);
 
 //  END SERVER CONFIGURATION 
 server.listen(port);

@@ -1,0 +1,13 @@
+Sun Apr 10 12:16:53 EDT 2016
+
+curl -v -H "Content-Type: application/json"  --data "@TFLNdata.json"  http://192.168.1.106:8080/api/texts
+curl  -X GET http://192.168.1.106:8080/api/text
+curl  -X GET http://192.168.1.106:8080/api/texts
+//this is easeier to modify than creating a new json file each time.
+curl -v -H "Content-Type: application/json"  -d '{"Area Code":"900","Text":"My diaphragm came out when i farted"}'   http://192.168.1.106:8080/api/text
+
+Mon Apr 11 21:52:43 EDT 2016
+curl  -X PUT http://192.168.1.106:8080/api/text/downvote/57094c758705516d8814a310
+//how many times as the naming of the route or property screwed me over? Sigh, too many to count. And typically it is the pluralization of it all. Stupid addition or omission of the trailing 's'.
+curl -X PUT -H "Content-Type: multipart/form-data;" -F "key1=val1" "YOUR_URI"
+curl http://192.168.1.106:8080/api/texts/sortMostDownvoted  #this defaults to GET

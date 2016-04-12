@@ -1,0 +1,23 @@
+Sat Apr  9 22:24:58 EDT 2016
+http://stackoverflow.com/questions/4686500/how-to-use-mongoimport-to-import-csv
+https://docs.mongodb.org/manual/reference/program/mongoimport/#options
+
+https://docs.mongodb.org/manual/reference/method/db.collection.find/
+https://docs.mongodb.org/manual/reference/operator/query/text/  use this guy to get results that contain certain text
+http://stackoverflow.com/questions/10610131/checking-if-a-field-contains-a-string
+
+http://mongoosejs.com/docs/guide.html
+http://mongoosejs.com/docs/models.html
+http://stackoverflow.com/questions/29664499/mongoose-static-methods-vs-instance-methods
+http://mongoosejs.com/docs/guide.html#methods
+http://mongoosejs.com/docs/2.7.x/docs/methods-statics.html old docs?
+
+Express4
+http://stackoverflow.com/questions/18637148/using-app-configure-in-express
+https://github.com/expressjs/express/wiki/Migrating-from-3.x-to-4.x
+https://github.com/senchalabs/connect#middleware
+
+Sun Apr 10 12:39:04 EDT 2016
+I used this to import my text file into mongo. I was unable to get my api to work to talk to this db despite seeing the data that was imported. 
+./mongoimport -d TFLN -c TFLN --type tsv --file ~/Repo/Github/BashScripts/TFLN/TFLN16112013.tsv.txt --headerline
+I started a small mongo/mongoose POC project with the same TFLN name. Now there are two TFLN databases. Using the api, I only see the data that I insert with a POST. I can't see the stuff inserted via the above mongoimport. I'm not sure if it is something with the schema that is jacking it all up. 
